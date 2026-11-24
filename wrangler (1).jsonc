@@ -1,0 +1,21 @@
+{
+  // Worker 名字必须和 Cloudflare 后台里你现有的 Worker 名字一模一样
+  "name": "officialkelabbinabadanadaptif",
+  "main": "chat-worker.js",
+  "compatibility_date": "2025-09-01",
+  // 部署时保留你在 Cloudflare 后台手动添加的变量（否则每次部署都会被清掉）
+  "keep_vars": true,
+  "assets": {
+    // 网页和图片就在仓库根目录
+    "directory": "./",
+    "binding": "ASSETS",
+    // 所有请求都先交给 Worker：网页本体和聊天后端都在 chat-worker.js 里，图片再由它转给静态文件
+    "run_worker_first": true
+  },
+  // 让 Worker 在美国机房运行：Google 的 Gemini 接口不接受部分地区（如香港）的请求
+  "placement": { "region": "aws:us-east-1" }
+  // 活动资料（可选）：建好 KV 后，把下面三行的注释去掉，id 换成你的 KV namespace ID
+  // ,"kv_namespaces": [
+  //   { "binding": "KBBA_KV", "id": "这里填 KV namespace ID" }
+  // ]
+}
