@@ -1,0 +1,7 @@
+chat-worker.js
+wrangler.jsonc
+.assetsignore
+index.html
+README.md
+.git
+.github
